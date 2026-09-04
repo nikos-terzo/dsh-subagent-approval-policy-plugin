@@ -62,6 +62,20 @@ For example, install this repository directly from GitHub with pnpm:
 pnpm add github:nikos-terzo/dsh-subagent-approval-policy-plugin
 ```
 
+Then add this row to the host application's `cordis.yml`:
+
+```yaml
+- id: subagent-approval-policy
+  name: dsh-subagent-approval-policy
+  config:
+    toolNames:
+      - subagent
+      - subagent_fork
+      - subagent_codex
+      - subagent_claude_code
+      - workflow
+```
+
 The row belongs in the host composition. Its position relative to the approval
 row is only organizational; Cordis resolves the `tools` and `approval`
 services through dependency injection. Bundle metadata is applied
