@@ -59,9 +59,7 @@ are separate steps: Cordis loads the plugin only when the row is present.
 For example, install this repository directly from GitHub with pnpm:
 
 ```sh
-pnpm add \
-  --allow-build=dsh-subagent-approval-policy \
-  github:nikos-terzo/dsh-subagent-approval-policy-plugin
+pnpm add github:nikos-terzo/dsh-subagent-approval-policy-plugin
 ```
 
 The row belongs in the host composition. Its position relative to the approval
