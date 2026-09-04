@@ -26,7 +26,7 @@ For a normal Harness profile, install the bundle with `dsh plugin`. This
 installs the package and automatically adds its `dsh.bundle` patch:
 
 ```sh
-dsh plugin --profile demo add github:nikos-terzo/dsh-subagent-approval-policy-plugin
+dsh plugin --profile <profile-name> add github:nikos-terzo/dsh-subagent-approval-policy-plugin
 ```
 
 The bundle's `dsh.bundle` manifest automatically applies
@@ -34,7 +34,7 @@ The bundle's `dsh.bundle` manifest automatically applies
 
 ```yaml
 - id: subagent-approval-policy
-  name: '@deepseek-ai/dsh-subagent-approval-policy'
+  name: dsh-subagent-approval-policy
   config:
     toolNames:
       - subagent
@@ -55,6 +55,14 @@ For an application that directly loads a complete `cordis.yml`, install the
 package as an application dependency and add the row from `cordis.patch.yml`
 to that composition manually. Installing a package and activating its plugin
 are separate steps: Cordis loads the plugin only when the row is present.
+
+For example, install this repository directly from GitHub with pnpm:
+
+```sh
+pnpm add \
+  --allow-build=dsh-subagent-approval-policy \
+  github:nikos-terzo/dsh-subagent-approval-policy-plugin
+```
 
 The row belongs in the host composition. Its position relative to the approval
 row is only organizational; Cordis resolves the `tools` and `approval`

@@ -1,6 +1,6 @@
 - insert:
     - id: subagent-approval-policy
-      name: '@deepseek-ai/dsh-subagent-approval-policy'
+      name: dsh-subagent-approval-policy
       config:
         toolNames:
           - subagent

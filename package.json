@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-subagent-approval-policy",
+  "name": "dsh-subagent-approval-policy",
   "version": "0.1.0",
   "description": "Cordis pre-execution gate requiring human approval before subagent tools launch",
   "type": "module",
