@@ -20,7 +20,10 @@ pnpm run typecheck
 pnpm run build
 ```
 
-Install the bundle into a profile:
+### Normal DSH profile installation (recommended)
+
+For a normal Harness profile, install the bundle with `dsh plugin`. This
+installs the package and automatically adds its `dsh.bundle` patch:
 
 ```sh
 dsh plugin --profile demo add github:nikos-terzo/dsh-subagent-approval-policy-plugin
@@ -46,14 +49,23 @@ approval answerer/UI remains responsible for presenting the question; this
 plugin only enforces the pre-launch decision. Do not put this row in an agent
 preset: it protects the shared subagent registry and must cover every session.
 
+### Standalone applications
+
+For an application that directly loads a complete `cordis.yml`, install the
+package as an application dependency and add the row from `cordis.patch.yml`
+to that composition manually. Installing a package and activating its plugin
+are separate steps: Cordis loads the plugin only when the row is present.
+
+The row belongs in the host composition. Its position relative to the approval
+row is only organizational; Cordis resolves the `tools` and `approval`
+services through dependency injection. Bundle metadata is applied
+automatically only by the `dsh plugin` profile manager.
+
 The `workflow` name is included by default because its script can call
 `agent()` and fan out children. This produces one approval for starting the
 workflow; per-child approval requires the workflow provider itself to expose a
 pre-launch hook.
 
-## Local Qwen / ACP note
-
-The model route does not change the policy. `nori`/ACP still receives the
-normal tool error when a launch is rejected, and the same session's configured
-approval answerer must answer the request. In unattended mode where the
+The model route does not change the policy. ACP and other clients receive the
+normal tool error when a launch is rejected. In unattended mode where the
 approval service policy is `never`, launches are rejected deterministically.
