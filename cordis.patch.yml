@@ -1,0 +1,10 @@
+- insert:
+    - id: subagent-approval-policy
+      name: '@deepseek-ai/dsh-subagent-approval-policy'
+      config:
+        toolNames:
+          - subagent
+          - subagent_fork
+          - subagent_codex
+          - subagent_claude_code
+          - workflow
